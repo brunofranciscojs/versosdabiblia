@@ -1,0 +1,63 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{ @apply w-full font-['PT_Serif'] scroll-smooth }
+
+time{
+   @apply [&>strong]:bg-white [&>p]:inline [&>p]:text-white [&>strong]:rounded [&>*]:px-2 [&>strong]:[zoom:.9] [&>strong]:mt-2 [&>strong]:inline-block [&>strong]:text-3xl
+
+}
+
+.results::-webkit-scrollbar { @apply w-1 }
+.results::-webkit-scrollbar-track { @apply bg-transparent }
+.results::-webkit-scrollbar-thumb { @apply dark:bg-[#ffffff44] bg-[#00000044]  }
+
+.h-24::-webkit-scrollbar { @apply w-1 }
+.h-24::-webkit-scrollbar-track { @apply bg-transparent }
+.h-24::-webkit-scrollbar-thumb { @apply dark:bg-[#ffffff44] bg-[#00000044]  }
+
+.salvos::-webkit-scrollbar { @apply w-0.5 }
+.salvos::-webkit-scrollbar-track { @apply bg-transparent }
+.salvos::-webkit-scrollbar-thumb { @apply dark:bg-[#ffffff33] bg-[#00000022]  }
+
+
+.listaCH::-webkit-scrollbar { @apply w-0.5 }
+.listaCH::-webkit-scrollbar-track { @apply bg-transparent }
+.listaCH::-webkit-scrollbar-thumb { @apply dark:bg-[#ffffff33] bg-[#00000022]  }
+
+
+.ativoCH::-webkit-scrollbar { @apply w-0.5 }
+.ativoCH::-webkit-scrollbar-track { @apply bg-transparent }
+.ativoCH::-webkit-scrollbar-thumb { @apply dark:bg-[#ffffff33] bg-[#00000022]  }
+
+
+header{
+   @apply bg-[#fafafa] dark:bg-[#414141] flex items-center justify-evenly flex-col lg:flex-row lg:gap-8 gap-6 z-20 border-2 dark:border-[#3f3f3f] [&:has(.mobile)]:h-full [&:has(.mobile)]:fixed [&:has(.mobile)]:z-50
+            border-gray-200 border-l-0 border-r-0 border-t-0 py-8 [&:has(.mobile)]:py-0 mx-auto w-full lg:px-20 px-0 shadow-xl shadow-[#00000010] [&:has(.mobile)_.busca]:hidden;
+
+   >div{
+      @apply max-w-[1550px] w-[90%] flex items-center lg:gap-8 gap-6 lg:flex-row justify-evenly mx-auto translate-x-7 [&:has(.mobile)]:h-dvh [&:has(.mobile)]:absolute [&:has(.mobile)]:left-0
+               
+            [&:has(.mobile)]:translate-x-0 [&:has(.mobile)]:w-full;
+
+      >ul{
+         @apply cl:flex gap-9 hidden;
+          li{
+            @apply text-gray-400 hover:text-gray-950 dark:hover:text-gray-300 duration-300 text-xs xxs:text-base
+         }
+      }
+      .mobile{
+         @apply absolute top-0 left-0 w-full h-dvh bg-gray-300/80 dark:bg-gray-800/60 backdrop-blur flex items-center flex-col justify-start py-28 gap-5;
+
+         li{
+            @apply text-gray-600 dark:text-gray-300 hover:text-gray-950 dark:hover:text-gray-100 duration-100 text-4xl
+         }
+      }
+   }
+}
+
+@keyframes fade{
+   to {
+      opacity: 1;
+   }
+}
+

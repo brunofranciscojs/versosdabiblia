@@ -1,0 +1,42 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+     ns="http://www.sitemaps.org/schemas/sitemap/0.9"
+     datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+     <start>
+          <ref name="urlsetContent" />
+     </start>
+     <define name="urlsetContent">
+          <element name="urlset">
+               <oneOrMore>
+                    <ref name="urlContent" />
+               </oneOrMore>
+          </element>
+     </define>
+     <define name="urlContent">
+          <element name="url">
+               <ref name="locContent" />
+               <ref name="lastmodContent" />
+               <ref name="changefreqContent" />
+               <ref name="priorityContent" />
+          </element>
+     </define>
+     <define name="locContent">
+          <element name="loc">
+               <text />
+          </element>
+     </define>
+     <define name="lastmodContent">
+          <element name="lastmod">
+               <text />
+          </element>
+     </define>
+     <define name="changefreqContent">
+          <element name="changefreq">
+               <text />
+          </element>
+     </define>
+     <define name="priorityContent">
+          <element name="priority">
+               <text />
+          </element>
+     </define>
+</grammar>
