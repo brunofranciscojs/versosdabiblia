@@ -25,7 +25,7 @@ export default function Livros() {
       const res = await req.json();
       setTimeout(() =>{
         setAbrev(res);
-      },600)
+      },400)
     };
     fetchBook();
   }, [abbrev]);
@@ -57,16 +57,16 @@ export default function Livros() {
   return (
     <>
       <Salvos />
-      <Header className="fixed top-0 z-50" />
+      <Header className="fixed top-0 z-40" />
       <article className="max-w-[1280px] text-left mx-auto flex flex-col lg:flex-row relative h-full gap-10 py-16 px-8 font-['Poppins']">
 
           <div className="lg:top-[9rem] top-28 lg:w-4/12 w-full sticky h-full z-20 bg-[linear-gradient(to_bottom,#f0f0f0_70%,_transparent)] dark:bg-[linear-gradient(to_bottom,#313131_70%,_transparent)] lg:py-0 py-8">
             {abrev.chapters.length > 1 && (
               <>
                 <small className="text-gray-400 tracking-widest block text-center">NAVEGUE PELOS CAPÍTULOS:</small> 
-                <div className="flex gap-2 flex-wrap items-center justify-center [&>.active]:bg-gray-600 dark:[&>.active]:bg-gray-800 cl:px-8 px-0 overflow-y-scroll h-24 lg:h-auto">
+                <div className="flex gap-2 flex-wrap items-center justify-center [&>.active]:font-bold dark:[&>.active]:text-white [&>.active]:text-black cl:px-8 px-0 overflow-y-scroll h-16 lg:h-auto nav pt-3">
                     {abrev.chapters.map((_, index) => (
-                        <button key={index} onClick={() => setPagina(index)} className={`w-6 h-6 rounded text-gray-200 text-center hover:bg-gray-700 dark:bg-gray-600 bg-gray-400 text-xs ${pagina === index ? 'active' : ''}`}>
+                        <button key={index} onClick={() => setPagina(index)} className={`w-6 h-6 rounded text-gray-700 dark:text-gray-400 text-center hover:text-black dark:hover:text-white text-xs ${pagina === index ? 'active' : ''}`}>
                         {index + 1}
                         </button>
                     ))}
@@ -86,7 +86,7 @@ export default function Livros() {
           </div>
 
           {abrev.chapters[pagina].map((quote, index) => (
-            <div key={index} className="relative [&:last-of-type_hr]:opacity-0 cl:pr-0 pr-10 cl:pl-0 pl-1" onMouseEnter={()=>setText(quote)} onTouchStart={()=>setText(quote)}>
+            <div key={index} className="relative [&:last-of-type_hr]:opacity-0 pr-10 cl:pl-0 pl-1" onMouseEnter={()=>setText(quote)} onTouchStart={()=>setText(quote)}>
               <span className="dark:text-gray-400 text-gray-700 block py-5">
                 <sup className="px-0.5 py-0.5 rounded-full text-[.6rem] z-10 relative backdrop-blur-sm bg:text-gray-100 text-gray-800 dark:text-gray-500 mr-1">
                   {index + 1}
