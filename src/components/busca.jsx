@@ -58,12 +58,12 @@ export default function Busca({ className, mainSearh, altSearch, placeholder }) 
                     <div key={index} className="flex flex-col items-start hover:bg-gray-100 dark:hover:bg-gray-800 px-6 gap-5 empty:py-0 py-2 font-['Poppins'] [&:first-of-type]:mt-5">
                          {mainSearh && 
                                 <div className="flex gap-2 items-center">
-                                    <Link smooth to={`/livros/${item.name.split(' ').join('')}/${btoa(item.abbrev)}/#${value.includes(' ') && item.matchedChapters.length > 0 ? `${item.matchedChapters.join(', ')}` : ''}`}>
+                                    <Link smooth to={`/livros/${item.name.split(' ').join('')}/${btoa(item.abbrev)}${value.includes(' ') && item.matchedChapters.length > 0 ? `/#${item.matchedChapters.join(', ')}` : ''}`}>
                                         <span className="block text-gray-700 dark:text-gray-400 mt-5 z-0 relative">    
                                             {desacentuar(item.name)}: {value.includes(' ') && item.matchedChapters.length > 0 ? `${item.matchedChapters.join(', ')}` : ''}        
                                         </span>
                                     </Link>
-                                    <Link to={`/ouvir/${item.name.split(' ').join('')}/${btoa(item.abbrev)}/#ch${value.includes(' ') && item.matchedChapters.length > 0 ? `${item.matchedChapters.join(', ')}` : ''}`}>
+                                    <Link to={`/ouvir/${item.name.split(' ').join('')}/${btoa(item.abbrev)}${value.includes(' ') && item.matchedChapters.length > 0 ? `/#ch${item.matchedChapters.join(', ')}` : ''}`}>
                                         <span className="block text-gray-700 dark:text-gray-400 mt-5 z-10 relative hover:[&>_svg]:opacity-40 [&>_svg]:duration-100 dark:[&>_svg_path]:stroke-gray-400"
                                             dangerouslySetInnerHTML={{
                                                 __html: hasVoice
