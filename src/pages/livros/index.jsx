@@ -30,6 +30,17 @@ export default function Livros() {
     fetchBook();
   }, [abbrev]);
 
+  useEffect(() => {
+    const hashPage = window.location.hash;
+    const page = hashPage ? parseInt(hashPage.substring(1), 10) : 0;
+    
+    if (!isNaN(page) && page >= 0) {
+      setPagina(page);
+    } else {
+      setPagina(0);
+    }
+  }, []);
+  
   const handleTTSClick = async (index) => {
     setLoading((prevLoading) => ({ ...prevLoading, [index]: true }));
     await convertTextToSpeech();
@@ -38,8 +49,8 @@ export default function Livros() {
 
   if (!abrev.chapters) {
     return          <div className="h-full flex place-items-center absolute w-full justify-center gap-6">
-                       <div className="text-gray-950 dark:text-gray-400 animate-spin" dangerouslySetInnerHTML={{__html:loadSpin}} />
-                       <span>carregando...</span>
+                       <div className="text-gray-950 dark:text-gray-400 animate-spin dark:invert" dangerouslySetInnerHTML={{__html:loadSpin}} />
+                       <span className="text-gray-600 dark:text-gray-300">carregando...</span>
                     </div>
   }
 
@@ -65,17 +76,17 @@ export default function Livros() {
             <OuvirVerso marqiTxt={marqiTxt} className={'lg:flex-col flex-row'} now={true} mrq={true}/>
           </div>
 
-        <div className="lg:w-1/2 w-full relative z-10 py-24">
+        <div className="lg:w-1/2 w-full relative z-10 py-24 ">
 
-          <div className="flex justify-between">
-            <button className="text-gray-950 dark:text-gray-400 hover:text-gray-950 dark:hover:text-gray-200 px-8" onClick={() => navigate('/')}>
+          <div className="flex justify-between items-center mb-12">
+            <button className="text-gray-950 dark:text-gray-400 hover:text-gray-950 dark:hover:text-gray-200 cl:px-8 px-0" onClick={() => navigate('/')}>
               &lt; voltar
             </button>
-            <h2 className="text-gray-600 dark:text-gray-400 font-extrabold text-3xl mb-5">{abrev.name}</h2>
+            <h2 className="text-gray-600 dark:text-gray-400 font-extrabold cl:text-3xl text-xl ">{abrev.name}: {pagina+1}</h2>
           </div>
 
           {abrev.chapters[pagina].map((quote, index) => (
-            <div key={index} className="relative [&:last-of-type_hr]:opacity-0 px-8" onMouseEnter={()=>setText(quote)} onTouchStart={()=>setText(quote)}>
+            <div key={index} className="relative [&:last-of-type_hr]:opacity-0 cl:pr-0 pr-10 cl:pl-0 pl-1" onMouseEnter={()=>setText(quote)} onTouchStart={()=>setText(quote)}>
               <span className="dark:text-gray-400 text-gray-700 block py-5">
                 <sup className="px-0.5 py-0.5 rounded-full text-[.6rem] z-10 relative backdrop-blur-sm bg:text-gray-100 text-gray-800 dark:text-gray-500 mr-1">
                   {index + 1}
