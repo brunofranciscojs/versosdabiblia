@@ -9,7 +9,7 @@ export const TTSContextProvider = ({ children }) => {
   const convertTextToSpeech = async () => {
     const subscriptionKey = 'GERE_CHAVE_NA_AZURE';
     const region = 'GERE_SUA_REGIAO_NA_AZURE';
-    const endpoint = `https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`;
+    const endpoint = `https://${region}.api.cognitive.microsoft.com`;
 
     const ssml = `
       <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='pt-BR'>
